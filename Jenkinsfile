@@ -46,6 +46,7 @@ spec:
                 sh 'docker build -t sainikhil1999/demoapp .'
                 sh 'docker login -u sainikhil1999 -p Akhil@1999'
                 sh 'docker push sainikhil1999/demoapp'
+                sh 'kubectl apply -f ingress.yaml'
        }
     }
      stage("install helm"){
@@ -58,7 +59,7 @@ spec:
        stage('helm') {
            steps {
                sh 'helm version'
-               sh 'helm upgrade --install dotnet1 dotnet-app'
+               sh 'helm upgrade --install helmapp dotnet-app'
  
              
            }
